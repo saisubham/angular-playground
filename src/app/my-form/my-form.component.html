@@ -11,8 +11,13 @@
                         formControlName="username"
                         [ngClass]="{'is-invalid': myForm.get('username').invalid && myForm.get('username').touched}"
                         class="form-control">
-                    <div *ngIf="myForm.get('username').invalid && myForm.get('username').touched" class="text-danger">
-                        Please enter valid username
+                    <div *ngIf="myForm.get('username').errors?.['invalidUsername'] && myForm.get('username').touched"
+                         class="text-danger">
+                        Username can't be 'test'
+                    </div>
+                    <div *ngIf="myForm.get('username').errors?.['required'] && myForm.get('username').touched"
+                         class="text-danger">
+                        Username can't be empty
                     </div>
                     <label for="email">Email</label>
                     <input

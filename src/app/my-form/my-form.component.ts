@@ -16,7 +16,7 @@ export class MyFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.myForm = new FormGroup<any>({
-            'username': new FormControl(null, Validators.required),
+            'username': new FormControl(null, [Validators.required, this.invalidUsername.bind(this)]),
             'email': new FormControl(null, [Validators.required, Validators.email]),
             'gender': new FormControl(null)
         });
@@ -25,5 +25,12 @@ export class MyFormComponent implements OnInit {
     onSubmit() {
         console.log(this.myForm.value);
         this.myForm.reset();
+    }
+
+    invalidUsername(control: FormControl): { [s: string]: boolean } {
+        if (control.value === 'test') {
+            return { 'invalidUsername': true };
+        }
+        return null;
     }
 }
