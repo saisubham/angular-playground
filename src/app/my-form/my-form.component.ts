@@ -23,6 +23,7 @@ export class MyFormComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.myForm);
+        console.log(this.myForm.value);
+        this.myForm.reset();
     }
 }

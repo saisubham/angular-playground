@@ -5,13 +5,25 @@
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" formControlName="username" class="form-control">
-                    <span *ngIf="myForm.get('username').invalid && myForm.get('username').touched">Please enter valid username</span>
-                    <br>
+                    <input
+                        type="text"
+                        id="username"
+                        formControlName="username"
+                        [ngClass]="{'is-invalid': myForm.get('username').invalid && myForm.get('username').touched}"
+                        class="form-control">
+                    <div *ngIf="myForm.get('username').invalid && myForm.get('username').touched" class="text-danger">
+                        Please enter valid username
+                    </div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" formControlName="email" class="form-control">
-                    <span *ngIf="myForm.get('email').invalid && myForm.get('email').touched">Please enter valid email</span>
-                    <br>
+                    <input
+                        type="text"
+                        id="email"
+                        formControlName="email"
+                        [ngClass]="{'is-invalid': myForm.get('email').invalid && myForm.get('email').touched}"
+                        class="form-control">
+                    <div *ngIf="myForm.get('email').invalid && myForm.get('email').touched" class="text-danger">
+                        Please enter valid email
+                    </div>
                     <div class="radio mb-2" *ngFor="let gender of genders">
                         <label>
                             <input type="radio" formControlName="gender" [value]="gender">
