@@ -1,0 +1,13 @@
+<div *ngIf="data$ | async as data">
+    <ul *ngFor="let person of data.personList">
+        <li>{{person.firstName}}</li>
+    </ul>
+    <hr>
+    <ul *ngFor="let person of data.personListMap">
+        <li>{{person}}</li>
+    </ul>
+    <hr>
+    <ul *ngFor="let person of data.personListFilter">
+        <li>{{person.firstName}}</li>
+    </ul>
+</div>
