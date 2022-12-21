@@ -5,16 +5,20 @@
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" formControlName="username" class="form-control mb-3">
+                    <input type="text" id="username" formControlName="username" class="form-control">
+                    <span *ngIf="myForm.get('username').invalid && myForm.get('username').touched">Please enter valid username</span>
+                    <br>
                     <label for="email">Email</label>
-                    <input type="text" id="email" formControlName="email" class="form-control mb-3">
+                    <input type="text" id="email" formControlName="email" class="form-control">
+                    <span *ngIf="myForm.get('email').invalid && myForm.get('email').touched">Please enter valid email</span>
+                    <br>
                     <div class="radio mb-2" *ngFor="let gender of genders">
                         <label>
                             <input type="radio" formControlName="gender" [value]="gender">
                             {{gender}}
                         </label>
                     </div>
-                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    <button class="btn btn-primary mt-2" type="submit" [disabled]="myForm.invalid">Submit</button>
                 </div>
             </form>
         </div>
