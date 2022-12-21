@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 interface Person {
     firstName: string,
@@ -9,15 +9,19 @@ interface Person {
     selector: 'app-person',
     template: `
         <h3>Person List</h3>
-        <p>Hello! {{getFullName()}}</p>
+        <p>Hello! {{fullName}}</p>
         <button (click)="onClick()">Trigger change detection</button>
     `
 })
-export class PersonComponent implements OnInit {
+export class PersonComponent implements OnChanges {
 
     @Input() person: Person
+    fullName = '';
 
-    ngOnInit(): void {
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.person) {
+            this.fullName = this.getFullName();
+        }
     }
 
     onClick(): void {
