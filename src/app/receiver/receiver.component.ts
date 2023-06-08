@@ -14,6 +14,6 @@ export class ReceiverComponent implements OnInit {
 
   ngOnInit(): void {
     this.data$ = this.dataService.recvEvent().pipe(
-      map(event => localStorage.getItem('data')));
+      map(event => event));
   }
 }

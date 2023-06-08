@@ -5,7 +5,6 @@ import { Observable, Subject } from "rxjs";
   providedIn: 'root'
 })
 export class DataService {
-  private channel = new BroadcastChannel('channel');
   private subject = new Subject<number>();
 
   constructor() {
@@ -18,7 +17,6 @@ export class DataService {
 
   sendEvent(data: number) {
     localStorage.setItem('data', data.toString());
-    this.channel.postMessage(data);
   }
 
   recvEvent(): Observable<number> {
