@@ -16,11 +16,11 @@ export class SenderComponent implements OnInit {
 
   sendEvent() {
     this.count++;
-    this.dataService.sendEvent(this.count);
+    this.dataService.setCount(this.count);
   }
 
   reset() {
     this.count=0;
-    this.dataService.sendEvent(this.count);
+    this.dataService.setCount(this.count);
   }
 }

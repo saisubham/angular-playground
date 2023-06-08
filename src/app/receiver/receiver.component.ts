@@ -13,7 +13,7 @@ export class ReceiverComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data$ = this.dataService.recvEvent().pipe(
+    this.data$ = this.dataService.getObservable().pipe(
       map(event => event));
   }
 }

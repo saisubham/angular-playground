@@ -15,11 +15,11 @@ export class DataService {
     });
   }
 
-  sendEvent(data: number) {
+  setCount(data: number) {
     localStorage.setItem('data', data.toString());
   }
 
-  recvEvent(): Observable<number> {
+  getObservable(): Observable<number> {
     return this.subject.asObservable();
   }
 }
